@@ -1,0 +1,56 @@
+/* Default styles */
+body{
+  background: black;
+  margin: auto;
+  color:white;
+}
+
+#apiTitle{
+  font-weight: bold;
+  font-size:3rem ;
+  text-align: center;
+}
+.container{
+  text-align: center;
+}
+#fetch-data{
+  background: white;
+  color: black;
+  position: relative;
+  left: 25rem;
+  align-items: center;
+  margin:10% 0% 10% 10%;
+  width: 30%;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+#map {
+    background-color: black;
+    height: 500px;
+    width: 100%;
+}
+
+/* Media queries for screens smaller than 768px (tablets and mobile devices) */
+@media only screen and (max-width: 768px) {
+  #fetch-data {
+    left: auto;
+    margin: 10% auto;
+    width: 80%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  #fetch-data {
+    left: auto;
+    margin: 10% auto;
+    width: 20%;
+  }
+}
+/* Media queries for screens larger than 1200px (desktops and larger devices) */
+@media only screen and (min-width: 1200px) {
+  #fetch-data {
+    left: auto;
+    margin: 10% auto;
+    width: 20%;
+  }
+}
