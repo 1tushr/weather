@@ -42,6 +42,15 @@ body{
     margin: 10% auto;
     width: 80%;
   }
+  #map {
+    background-color: black;
+    height: 354px;
+    width: 80%;
+    margin-left: -3rem;
+    /* margin-right: 0rem; */
+    position: relative;
+    left: 5rem;
+}
 }
 @media only screen and (min-width: 768px) {
   #fetch-data {
@@ -49,6 +58,17 @@ body{
     margin: 10% auto;
     width: 20%;
   }
+
+  
+  #map {
+    background-color: black;
+    height: 354px;
+    width: 80%;
+    margin-left: -3rem;
+    /* margin-right: 0rem; */
+    position: relative;
+    left: 5rem;
+}
 }
 /* Media queries for screens larger than 1200px (desktops and larger devices) */
 @media only screen and (min-width: 1200px) {
