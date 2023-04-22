@@ -65,7 +65,8 @@ fetchDataButton.addEventListener("click", () => {
             <div id="list">
             <ul>
               <li>Location: ${locationName}</li>
-              <li>Lat: ${latitude}  <span> Long: ${longitude}</span>
+              <li>Lat: ${latitude}&nbsp;&nbsp;<span>Long: ${longitude}</span></li>
+
               <li>TimeZone: ${TimeZone}</li>
               <li>Wind Speed: ${windSpeed} m/s</li>
               <li>Pressure: ${pressure} hPa</li>

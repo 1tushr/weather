@@ -28,7 +28,11 @@ body{
 #map {
     background-color: black;
     height: 500px;
-    width: 100%;
+    width: 80%;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    position: relative;
+    left:5rem;
 }
 
 /* Media queries for screens smaller than 768px (tablets and mobile devices) */
@@ -57,6 +61,7 @@ body{
 #info{
   background: white;
   color: black;
+padding-bottom:  3rem;
   
 }
 
