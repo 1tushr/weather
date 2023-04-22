@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Map and Weather</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-y6YbZ6JX9C3OLG6o/bfRLzHPCyUcEJz+OpgGifOZrMavZrjJX9GQIsd+TmkTlQXYyLo17A8wNxR/c0YpLfbOeQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    #map {
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Map and Weather</h1>
+  <div id="map"></div>
+  <div id="weather"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-Fcy5uecx0bVmmLjyq3xVvrr3fQYc0QlOZ+ai8lR0qwE/6T0Q/zT/1d8xvzfmRsh6AlNec6F1q3U9v6nAvKW6vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    let mapCreated = false;
+    const fetchDataButton = document.getElementById("fetch-data");
+
+    fetchDataButton.addEventListener("click", () => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          console.log(latitude, longitude);
+
+          if (!mapCreated) {
+            // create map
+            const map = L.map("map").setView([latitude, longitude], 13);
+            L.tileLayer(
+              "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+              {
+                attribution:
+                  'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                maxZoom: 18,
+              }
+            ).addTo(map);
+            mapCreated = true;
+          } else {
+            // show alert message
+            alert("Map already created!");
+          }
+
+          // fetch weather information
+          const apiKey = "711c4d78eb670d25b9ea7c1e2244d9bb";
+          const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+          fetch(url)
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+              return response.json();
+            })
+            .then((data) => {
+              console.log(data);
+              const weatherInfo = document.getElementById("weather");
+              weatherInfo.innerHTML = `Weather: ${data.weather[0].description}, Temperature: ${data.main.temp}°C`;
+            })
+            .catch((error) => {
+              console.error("There was a problem with the fetch operation:", error);
+            });
+        },
+        () => {
+          alert("Unable to retrieve your location");
+        }
+      );
+    });
+  </script>
+</body>
+</html>
